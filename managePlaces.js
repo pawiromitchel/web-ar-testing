@@ -54,6 +54,7 @@ window.onload = () => {
                     const aLink = document.createElement('a-link');
                     aLink.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
                     aLink.setAttribute('title', place.name);
+                    aLink.setAttribute('clickhandler', '');
                     aLink.setAttribute('look-at', "[gps-camera]");
                     // text.setAttribute('href', 'https://akqa.com/');
                     aLink.setAttribute('scale', '1 1 1');
