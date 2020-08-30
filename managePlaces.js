@@ -1,15 +1,19 @@
+var PLACES = [];
+
+
 const loadPlaces = function (coords) {
     return loadPlaceStatic();
 };
 
 function loadPlaceStatic() {
-    const PLACES = [
+    PLACES = [
         {
             name: 'Home',
             location: {
                 lat: 5.6754981,
                 lng: -55.0723643,
-            }
+            }, 
+            description: `dit is mijn huis`
         },
         {
             name: 'Spottie hondenhok',
@@ -17,14 +21,16 @@ function loadPlaceStatic() {
             location: {
                 lat: 5.675573,
                 lng: -55.072281,
-            }
+            },
+            description: `dit is spottie's hondenhok en hij is zoooo blij ermee :D`
         },
         {
             name: 'Snoopy hondenhok',
             location: {
                 lat: 5.675581,
                 lng: -55.072395,
-            }
+            },
+            description: `dit is snoopy's hok`
         },
     ];
 
@@ -54,9 +60,10 @@ window.onload = () => {
                     const aLink = document.createElement('a-link');
                     aLink.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
                     aLink.setAttribute('title', place.name);
+                    aLink.setAttribute('description', place.description);
                     aLink.setAttribute('clickhandler', '');
                     aLink.setAttribute('look-at', "[gps-camera]");
-                    // text.setAttribute('href', 'https://akqa.com/');
+                    aLink.setAttribute('href', '#');
                     aLink.setAttribute('scale', '1 1 1');
 
                     // check if the place has an image connected to it
