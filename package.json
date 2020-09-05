@@ -1,0 +1,29 @@
+{
+  "name": "ar-test-with-studio",
+  "version": "1.0.0",
+  "description": "I'm playing around with the location based AR lib https://ar-js-org.github.io/AR.js-Docs/location-based/",
+  "main": "managePlaces.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pawiromitchel/ar-app-with-studio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pawiromitchel/ar-app-with-studio/issues"
+  },
+  "homepage": "https://github.com/pawiromitchel/ar-app-with-studio#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.5"
+  }
+}

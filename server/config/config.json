@@ -1,0 +1,27 @@
+{
+    "development": {
+      "username": "root",
+      "password": null,
+      "database": "alembo_ar_app",
+      "host": "localhost",
+      "dialect": "mysql",
+      "define": {
+        "timestamps" : false
+      },
+      "dialectOptions": {
+        "dateStrings": true
+      },
+      "timezone": "-03:00"
+    },
+    "production": {
+      "username": "root",
+      "password": null,
+      "database": "database_production",
+      "host": "127.0.0.1",
+      "dialect": "mysql",
+      "options.logging": "false",
+      "define": {
+        "timestamps" : false
+      }
+    }
+  }
