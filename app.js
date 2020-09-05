@@ -29,6 +29,9 @@ app.use(compression());
 //   }
 // });
 
+// Set Static Folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Auto load all our routes into the application.
 const normalizedPath = path.join(__dirname, "./backend/routes");
 fs.readdirSync(normalizedPath).forEach(function(file) {

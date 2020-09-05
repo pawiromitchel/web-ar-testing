@@ -1,41 +1,25 @@
 var PLACES = [];
 var gevonden = [];
+var ASSETS_URL = "http://localhost:3010/api/asset/listAll";
 
 const loadPlaces = function (coords) {
     return loadPlaceStatic();
 };
 
-function loadPlaceStatic() {
-    PLACES = [
-        {
-            id: 1,
-            name: 'Home',
-            location: {
-                lat: 5.6754981,
-                lng: -55.0723643,
-            }, 
-            description: `dit is mijn huis`
-        },
-        // {
-        //     id: 2,
-        //     name: 'Spottie hondenhok',
-        //     asset: 'assets/asset.png',
-        //     location: {
-        //         lat: 5.675573,
-        //         lng: -55.072281,
-        //     },
-        //     description: `dit is spottie's hondenhok en hij is zoooo blij ermee :D`
-        // },
-        {
-            id: 3,
-            name: 'Snoopy hondenhok',
-            location: {
-                lat: 5.675581,
-                lng: -55.072395,
-            },
-            description: `dit is snoopy's hok`
-        },
-    ];
+async function loadPlaceStatic() {
+
+    // fetch assets from the API
+    let response = await fetch(ASSETS_URL);
+    let PLACES;
+
+    if (response.ok) { // if HTTP-status is 200-299
+        // get the response body (the method explained below)
+        PLACES = await response.json();
+    } else {
+        alert("HTTP-Error: " + response.status);
+    }
+
+    console.log(PLACES);
 
     document.getElementById('totalObjects').innerHTML = PLACES.length;
 
@@ -50,7 +34,7 @@ function loadPlaceStatic() {
 
 window.onload = () => {
     const scene = document.querySelector('a-scene');
-    
+
 
     // first get current user location
     return navigator.geolocation.getCurrentPosition(function (position) {
@@ -59,14 +43,14 @@ window.onload = () => {
         loadPlaces(position.coords)
             .then((places) => {
                 places.forEach((place) => {
-                    const latitude = place.location.lat;
-                    const longitude = place.location.lng;
+                    const latitude = place.lat;
+                    const longitude = place.long;
 
                     // add place link
                     const aLink = document.createElement('a-link');
                     aLink.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                    aLink.setAttribute('uID', place.id);
-                    aLink.setAttribute('title', place.name);
+                    aLink.setAttribute('uID', place.asset_id);
+                    aLink.setAttribute('title', place.title);
                     aLink.setAttribute('description', place.description);
                     aLink.setAttribute('clickhandler', '');
                     aLink.setAttribute('look-at', "[gps-camera]");
