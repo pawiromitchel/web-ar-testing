@@ -1,5 +1,5 @@
 var PLACES = [];
-
+var gevonden = [];
 
 const loadPlaces = function (coords) {
     return loadPlaceStatic();
@@ -8,6 +8,7 @@ const loadPlaces = function (coords) {
 function loadPlaceStatic() {
     PLACES = [
         {
+            id: 1,
             name: 'Home',
             location: {
                 lat: 5.6754981,
@@ -15,16 +16,18 @@ function loadPlaceStatic() {
             }, 
             description: `dit is mijn huis`
         },
+        // {
+        //     id: 2,
+        //     name: 'Spottie hondenhok',
+        //     asset: 'assets/asset.png',
+        //     location: {
+        //         lat: 5.675573,
+        //         lng: -55.072281,
+        //     },
+        //     description: `dit is spottie's hondenhok en hij is zoooo blij ermee :D`
+        // },
         {
-            name: 'Spottie hondenhok',
-            asset: 'assets/asset.png',
-            location: {
-                lat: 5.675573,
-                lng: -55.072281,
-            },
-            description: `dit is spottie's hondenhok en hij is zoooo blij ermee :D`
-        },
-        {
+            id: 3,
             name: 'Snoopy hondenhok',
             location: {
                 lat: 5.675581,
@@ -33,6 +36,8 @@ function loadPlaceStatic() {
             description: `dit is snoopy's hok`
         },
     ];
+
+    document.getElementById('totalObjects').innerHTML = PLACES.length;
 
     return new Promise((resolve, reject) => {
         try {
@@ -45,6 +50,7 @@ function loadPlaceStatic() {
 
 window.onload = () => {
     const scene = document.querySelector('a-scene');
+    
 
     // first get current user location
     return navigator.geolocation.getCurrentPosition(function (position) {
@@ -59,6 +65,7 @@ window.onload = () => {
                     // add place link
                     const aLink = document.createElement('a-link');
                     aLink.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+                    aLink.setAttribute('uID', place.id);
                     aLink.setAttribute('title', place.name);
                     aLink.setAttribute('description', place.description);
                     aLink.setAttribute('clickhandler', '');
