@@ -17,27 +17,21 @@ async function loadPlaceStatic() {
     PLACES = [
         {
             title: 'Home',
-            location: {
-                lat: 5.6754981,
-                lng: -55.0723643,
-            },
+            lat: 5.6754981,
+            long: -55.0723643,
             description: `dit is mijn huis`
         },
         {
             title: 'Spottie hondenhok',
             asset: 'assets/asset.png',
-            location: {
-                lat: 5.675573,
-                lng: -55.072281,
-            },
+            lat: 5.675573,
+            long: -55.072281,
             description: `dit is spottie's hondenhok en hij is zoooo blij ermee :D`
         },
         {
             title: 'Snoopy hondenhok',
-            location: {
-                lat: 5.675581,
-                lng: -55.072395,
-            },
+            lat: 5.675581,
+            long: -55.072395,
             description: `dit is snoopy's hok`
         },
     ];
