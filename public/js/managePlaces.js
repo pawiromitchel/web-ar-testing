@@ -1,12 +1,59 @@
 var PLACES = [];
 var gevonden = [];
+var GET_DATA = "static"; // change this to dynamic to get data from the api
 var ASSETS_URL = "http://localhost:3010/api/asset/listAll";
 
 const loadPlaces = function (coords) {
-    return loadPlaceStatic();
+    if (GET_DATA === "static") {
+        console.log("[i] getting static data");
+        return loadPlaceStatic();
+    } else if (GET_DATA === "dynamic") {
+        console.log("[i] getting remote data");
+        return loadPlaceDynamic();
+    }
 };
 
 async function loadPlaceStatic() {
+    PLACES = [
+        {
+            title: 'Home',
+            location: {
+                lat: 5.6754981,
+                lng: -55.0723643,
+            },
+            description: `dit is mijn huis`
+        },
+        {
+            title: 'Spottie hondenhok',
+            asset: 'assets/asset.png',
+            location: {
+                lat: 5.675573,
+                lng: -55.072281,
+            },
+            description: `dit is spottie's hondenhok en hij is zoooo blij ermee :D`
+        },
+        {
+            title: 'Snoopy hondenhok',
+            location: {
+                lat: 5.675581,
+                lng: -55.072395,
+            },
+            description: `dit is snoopy's hok`
+        },
+    ];
+
+    document.getElementById('totalObjects').innerHTML = PLACES.length;
+
+    return new Promise((resolve, reject) => {
+        try {
+            resolve(PLACES)
+        } catch (err) {
+            reject(err)
+        }
+    })
+}
+
+async function loadPlaceDynamic() {
 
     // fetch assets from the API
     let response = await fetch(ASSETS_URL);
@@ -34,7 +81,6 @@ async function loadPlaceStatic() {
 
 window.onload = () => {
     const scene = document.querySelector('a-scene');
-
 
     // first get current user location
     return navigator.geolocation.getCurrentPosition(function (position) {
