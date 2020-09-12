@@ -42,25 +42,23 @@
             <span class="uk-badge" id="foundObjects">0</span> van de <span class="uk-badge" id="totalObjects">0</span>
             gevonden! 😮
         </div>
-        <a-scene cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;' raycaster="objects: [clickhandler];"
-            vr-mode-ui="enabled: false" embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
-            <!-- <a-image src="assets/asset.png" look-at="[gps-camera]" scale="1 1 1"
-                gps-entity-place="latitude: 5.6754981; longitude: -55.0723643;"></a-image> -->
-            <!-- <a-link gps-entity-place="latitude: 5.6754981; longitude: -55.0723643;" title="Home" scale="1 1 1"
-                look-at="[gps-camera]"></a-link> -->
-
-            <a-camera gps-camera rotation-reader></a-camera>
-        </a-scene>
     </div>
+    
+    <a-scene cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;' raycaster="objects: [clickhandler];"
+        vr-mode-ui="enabled: false" embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
+        <!-- <a-image src="assets/asset.png" look-at="[gps-camera]" scale="1 1 1"
+            gps-entity-place="latitude: 5.6754981; longitude: -55.0723643;"></a-image> -->
+        <!-- <a-link gps-entity-place="latitude: 5.6754981; longitude: -55.0723643;" title="Home" scale="1 1 1"
+            look-at="[gps-camera]"></a-link> -->
+
+        <a-camera gps-camera rotation-reader></a-camera>
+    </a-scene>
 
     <div id="popup-modal" class="uk-modal-full" uk-modal>
         <div class="uk-modal-dialog">
             <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
             <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
-                <div class="uk-background-cover" id="popup-image-cover"
-                    style="background-image: url('images/photo.jpg');" uk-height-viewport>
-                </div>
-                <div class="uk-padding-large">
+                <div class="uk-padding-large" uk-height-viewport>
                     <h1 id="popup-headline"></h1>
                     <p id="popup-body"></p>
                 </div>
